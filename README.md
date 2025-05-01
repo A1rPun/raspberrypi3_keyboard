@@ -11,6 +11,8 @@ $ apt get update
 $ apt get full-upgrade
 ```
 
+If you get mirror errors, fully replace your mirror file with the latest mirror file.
+
 ### Step 1.2: Get git and this repository
 
 ```
@@ -29,24 +31,15 @@ $ ./install/install.sh
 
 Need to run this every time you power on the Raspberry Pi and want to use this program
 
-### Step 2: Run with a helper program
-
 ```
 $ ./setup.py
 ```
 
-### Step 2: Run manually
-
-```
-$ nano config.json
-$ ./src/main.py
-```
-
 ## Step 3: Usage
 
-Input:
-q = quit
-m = simple mouse input
+Input:  
+q = quit  
+m = simple mouse input  
 any other string = send text as keys
 
 ## Uninstall

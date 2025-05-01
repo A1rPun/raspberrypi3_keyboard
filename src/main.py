@@ -5,10 +5,10 @@ import dbus
 import time
 import json
 import traceback
-import keymap
 import bluetooth
 import dbus.service
 import dbus.mainloop.glib
+from src import keymap
 from dbus.mainloop.glib import DBusGMainLoop
 
 
@@ -101,7 +101,7 @@ class BTDevice:
         print("Reading service record")
 
         try:
-            fh = open("sdp_record.xml", "r")
+            fh = open(sys.path[0] + "/src/sdp_record.xml", "r")
         except Exception as e:
             traceback.print_exc()
             print(e)
