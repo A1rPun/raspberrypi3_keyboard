@@ -80,10 +80,11 @@ class BTDevice:
 
         opts = {
             "AutoConnect": True,
-            "ServiceRecord": service_record,
-            "Role": "server",
+            "Name": self.config["ALIAS"],
+            "Role": "client",
             "RequireAuthentication": False,
-            "RequireAuthorization": False
+            "RequireAuthorization": False,
+            "ServiceRecord": service_record,
         }
 
         # retrieve a proxy for the bluez profile interface
