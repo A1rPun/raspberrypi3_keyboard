@@ -57,6 +57,7 @@ $ ./install/uninstall.sh
 
 ## Sources
 
+- https://impythonist.wordpress.com/2014/02/01/emulate-a-bluetooth-keyboard-with-the-raspberry-pi/
 - https://github.com/thanhlev/keyboard_mouse_emulate_on_raspberry
 - https://gist.github.com/scientificRat/be2bbac0769bfa04820bc73edc009bdf
 - https://github.com/AnesBenmerzoug/Bluetooth_HID

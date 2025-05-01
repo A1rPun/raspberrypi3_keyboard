@@ -51,23 +51,21 @@ class BluetoothBluezProfile(dbus.service.Object):
 # advertize a SDP record using our bluez profile class
 #
 class BTDevice:
-    config = json.load(open("./../config.json", "r"))
+    config = json.load(open(sys.path[0] + "/config.json", "r"))
     # define some constants
     P_CTRL = 17 # Service port - must match port configured in SDP record
     P_INTR = 19 # Interrrupt port - must match port configured in SDP record
 
     def __init__(self):
-
         print("Setting up Bluetooth device")
         self.init_bt_device()
         self.init_bluez_profile()
 
     # configure the bluetooth hardware device
     def init_bt_device(self):
-
         print("Configuring for name " + self.config["ALIAS"])
         os.system("hciconfig hci0 up")
-        os.system("sudo hciconfig hci0 class 0x05C0") # General Discoverable Mode
+        os.system("sudo hciconfig hci0 class " + self.config["CLASS"])
         os.system("sudo hciconfig hci0 name " + self.config["ALIAS"])
 
         # make the device discoverable
@@ -81,6 +79,7 @@ class BTDevice:
         service_record = self.read_sdp_service_record()
 
         opts = {
+            "AutoConnect": True,
             "ServiceRecord": service_record,
             "Role": "server",
             "RequireAuthentication": False,
@@ -95,11 +94,10 @@ class BTDevice:
 
         manager.RegisterProfile(self.config["PROFILE_DBUS_PATH"], self.config["UUID"], opts)
 
-        print("Profile registered ")
+        print("Profile registered")
 
     # read and return an sdp record from a file
     def read_sdp_service_record(self):
-
         print("Reading service record")
 
         try:
@@ -116,7 +114,6 @@ class BTDevice:
     # ideally this would be handled by the Bluez 5 profile
     # but that didn"t seem to work
     def listen(self):
-
         print("Waiting for connections")
         self.scontrol = bluetooth.BluetoothSocket(bluetooth.L2CAP)
         self.sinterrupt = bluetooth.BluetoothSocket(bluetooth.L2CAP)
