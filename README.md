@@ -1,58 +1,66 @@
-[![Build Status](https://travis-ci.com/quangthanh010290/keyboard_mouse_emulate_on_raspberry.svg?branch=master)](https://travis-ci.com/quangthanh010290/keyboard_mouse_emulate_on_raspberry)
+# Raspberry Pi 3 Keyboard
 
-# Make things work first 
+## Step 1: Installation
 
-## Step 1: Setup 
+Only need to do this once
 
-```
- sudo ./setup.sh
-```
- 
- 
-## Step 2: Run the Server
+### Step 1.1: Update your Raspberry Pi
 
 ```
-sudo ./boot.sh
+$ apt get update
+$ apt get full-upgrade
 ```
 
-
-## Step 3.1: Run Keyboard Client (using physical keyboard)
-
-- Need a physical keyboard connected to raspberry PI board
+### Step 1.2: Get git and this repository
 
 ```
-./keyboard/kb_client.py
+$ apt get git
+$ git clone https://github.com/A1rPun/raspberrypi3_keyboard
+$ cd raspberrypi3_keyboard
 ```
 
-## Step 3.2: Run Keyboard Client (no need physical keyboard, send string through dbus)
-
-- Dont need a physical keyboard connected to raspberry PI board
+### Step 1.3: Install the needed packages to run this program
 
 ```
-./keyboard/send_string.py "hello client, I'm a keyboard"
+$ ./install/install.sh
 ```
 
-## Step 3.3: Run mouse client (using physical mouse)
+## Step 2: Run the program
 
-- Need a physical mouse connected to raspberry PI board
-```
-./mouse/mouse_client.py
-```
+Need to run this every time you power on the Raspberry Pi and want to use this program
 
-## Step 3.4: Run Mouse client (no need physical mouse, string mouse data through dbus)
+### Step 2: Run with a helper program
 
-- Dont need a physical mouse connected to raspberry PI board
 ```
-./mouse/mouse_emulate.py 0 10 0 0
+$ ./setup.py
 ```
 
-# To understand what I'm doing in the background 
-[Make Raspberry Pi3 as an emulator bluetooth keyboard](https://thanhle.me/make-raspberry-pi3-as-an-emulator-bluetooth-keyboard/)
+### Step 2: Run manually
 
-## Keyboard setup demo (old version)
+```
+$ nano config.json
+$ ./src/main.py
+```
 
- [![ScreenShot](https://i0.wp.com/thanhle.me/wp-content/uploads/2020/02/bluetooth_mouse_emulate_on_ra%CC%81pberry.jpg)](https://www.youtube.com/watch?v=fFpIvjS4AXs)
+## Step 3: Usage
 
-## Mouse setup demo (ongoing)
-[Emulate Bluetooth mouse with Raspberry Pi](https://thanhle.me/emulate-bluetooth-mouse-with-raspberry-pi/)
-[![ScreenShot](https://i0.wp.com/thanhle.me/wp-content/uploads/2020/08/bluetooth_mouse_emulation_on_raspberry.jpg)](https://www.youtube.com/watch?v=fFpIvjS4AXs)
+Input:
+q = quit
+m = simple mouse input
+any other string = send text as keys
+
+## Uninstall
+
+```
+$ ./install/uninstall.sh
+```
+
+## Sources
+
+- https://github.com/thanhlev/keyboard_mouse_emulate_on_raspberry
+- https://gist.github.com/scientificRat/be2bbac0769bfa04820bc73edc009bdf
+- https://github.com/AnesBenmerzoug/Bluetooth_HID
+
+## Alternatives
+
+- https://github.com/quaxalber/bluetooth_2_usb

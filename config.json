@@ -1,0 +1,6 @@
+{
+  "MAC_ADDRESS": "",
+  "ALIAS": "Totally_Not_An_Emulated_Keyboard",
+  "UUID": "00001124-0000-1000-8000-00805f9b34fb",
+  "PROFILE_DBUS_PATH": "/bluez/hzy/hidbluetooth_profile"
+}
